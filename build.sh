@@ -82,7 +82,7 @@ cat .config
 
 ls -l ./package/feeds/githubaction/
 ls -l ./package/feeds/githubaction/node
-make V=s ./package/feeds/githubaction/node/${PKGNAME}/compile
+make V=s ./package/feeds/githubaction/${PKGNAME}/compile
 
 find bin -type f -exec ls -lh {} \;
 find bin -type f -name "*.ipk" -exec cp -f {} "${WORKDIR}" \; 
