@@ -18,6 +18,8 @@ git config --global user.name "aa"
 mkdir -p  ${WORKDIR}/buildsource
 cd  ${WORKDIR}/buildsource
 git clone "$SOURCECODEURL"
+cd openwrt-node-packages
+git checkout b189712
 cd  ${WORKDIR}
 
 
@@ -60,7 +62,7 @@ case "$BOARD" in
 esac
 
 cd openwrt-sdk
-sed -i "1i\src-link githubaction ${WORKDIR}/buildsource" feeds.conf.default
+sed -i "1i\src-link githubaction ${WORKDIR}/buildsource/openwrt-node-packages/node/" feeds.conf.default
 
 ls -l
 cat feeds.conf.default
