@@ -68,6 +68,9 @@ cat feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 echo CONFIG_ALL=y >.config
+echo CONFIG_PACKAGE_node=y >>.config
+echo CONFIG_NODEJS_16=y >>.config
+echo CONFIG_NODEJS_ICU_SMALL=y >>.config
 make defconfig
 make V=s ./package/feeds/githubaction/${PKGNAME}/compile
 
