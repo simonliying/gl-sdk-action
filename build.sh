@@ -62,7 +62,10 @@ case "$BOARD" in
 esac
 
 cd openwrt-sdk
-sed -i "1i\src-link githubaction ${WORKDIR}/buildsource/openwrt-node-packages/node/" feeds.conf.default
+ls -l  ${WORKDIR}/buildsource/openwrt-node-packages
+ls -l  ${WORKDIR}/buildsource/openwrt-node-packages/node
+
+sed -i "1i\src-link githubaction ${WORKDIR}/buildsource/openwrt-node-packages/" feeds.conf.default
 
 ls -l
 cat feeds.conf.default
@@ -74,7 +77,12 @@ echo CONFIG_PACKAGE_node=y >>.config
 echo CONFIG_NODEJS_16=y >>.config
 echo CONFIG_NODEJS_ICU_SMALL=y >>.config
 make defconfig
-make V=s ./package/feeds/githubaction/${PKGNAME}/compile
+
+cat .config
+
+ls -l ./package/feeds/githubaction/
+ls -l ./package/feeds/githubaction/node
+make V=s ./package/feeds/githubaction/node/${PKGNAME}/compile
 
 find bin -type f -exec ls -lh {} \;
 find bin -type f -name "*.ipk" -exec cp -f {} "${WORKDIR}" \; 
